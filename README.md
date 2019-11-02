@@ -4,7 +4,15 @@ MTN MoMo Developer Basics is a repository aimed at giving developers a head star
 *Disclaimer: This repository is not officially affiliated with MTN*
 
 # General Guidelines
-The aim is to accommodate any framework, implementation or programming language. The repo will be organised by having individual branches catering for different solutions. Developers are free to contribute to any branch relevant to their skill or interest.
+The aim is to accommodate any framework, implementation or programming language. This repo will be organised by having individual branches catering for different solutions. Developers are free to contribute to any branch relevant to their skill or interest.
+
+At a bare minimum, you will be expected to register on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and follow the [Getting Started Guidelines](https://momodeveloper.mtn.com/api-documentation/getting-started/) to enable you to:
+
+* Subscribe To MTN MoMo API Products
+* Manage Your Subscriptions (`Primary Key` and `Secondary Key`)
+* Generate *API User* and *API Key*
+
+which will be necessary in interacting with the API using those credentials generated.
 
 # Contribution Guidelines
 Contributions can be made through pull requests.
