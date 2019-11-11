@@ -77,6 +77,7 @@ which will be necessary in interacting with the API using those credentials gene
     ```
 
     4. Automation
+    
         And that's it, you're ready to start testing on the MTN MoMo API Sandbox. But, you don't want to be copying the generated keys and storing them in *.txt files, to be reused later. We need to create an automated solution that sends requests and stores resposnse data in a database, to be used by a web or mobile application. Each branch in this repo will have a different solution in achieving this.
 
 # Contribution Guidelines
