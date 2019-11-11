@@ -18,7 +18,7 @@ which will be necessary in interacting with the API using those credentials gene
 
 1. Register Application
 
-    The first thing you need to do to get started, after registering on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and signing in, is going to your [User Profile Page](https://momodeveloper.mtn.com/developer) where you will find two (2) sections, one for **Your Subscriptions** and another for **Your Applications**. Here you will need to click on *Register application*, under **Your Applications**, and enter details for your application, this step is necessary in order to avoid getting a `401 Error` when trying to generate your Oauth 2.0 credentials under [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser).
+    The first thing you need to do to get started, after registering on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and signing in, is going to your [User Profile Page](https://momodeveloper.mtn.com/developer) where you will find two (2) sections, one for **Your Subscriptions** and another for **Your Applications**. Here you will need to click on *Register application*, under **Your Applications**, and enter details for your application. This step is necessary in order to avoid getting a `401 Error` when trying to generate your Oauth 2.0 credentials under [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser).
 
     <img src="./assets/momo-api-register-app.png" alt="MTN MoMo API Developer Register App" title="MTN MoMo API Developer Register App" width="800">
 
@@ -31,6 +31,20 @@ which will be necessary in interacting with the API using those credentials gene
     1. **Collections:** Enable remote collection of bills, fees or taxes.
     1. **Disbursements:** Automatically deposit funds to multiple users
     1. **Remittances:** Remit funds to local recipients from the diaspora with ease
+
+    For each product, there are options to *See full documentation* and *Subscribe*. Below is an example for *Colllection Widget*.
+
+    <img src="./assets/mtn-momo-collection-widget-subscribe.png" alt="MTN MoMo API Collection Widget Product" title="MTN MoMo API Collection Widget Product" width="800">
+
+    Select *Subscribe* and you will be redirected to subscription page:
+
+    <img src="./assets/mtn-momo-subscribe-to-collection-widget.png" alt="MTN MoMo API Collection Widget Product" title="MTN MoMo API Collection Widget Product" width="800">
+
+    Then click the yellow Subscribe button to be subscribed to the product.
+
+    Now when you visit your [User Profile Page](https://momodeveloper.mtn.com/developer), you should see products to which you are subscribed to under **Your Subscriptions** section. Below is an example:
+
+    <img src="./assets/mtn-momo-subscriptions.png" alt="MTN MoMo API Subscriptions" title="MTN MoMo API Subscriptions" width="800">
 
 # Contribution Guidelines
 Contributions can be made through pull requests.
