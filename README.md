@@ -46,6 +46,20 @@ which will be necessary in interacting with the API using those credentials gene
 
     <img src="./assets/mtn-momo-subscriptions.png" alt="MTN MoMo API Subscriptions" title="MTN MoMo API Subscriptions" width="800">
 
+3. Create API User and API Key
+
+    Under [API Sandbox](https://momodeveloper.mtn.com/docs/services/collection), select [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api), you should be redirected to [/apiuser - POST endpoint testing page](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser?). Click the yellow *Try it* button to test if your application was registered.
+
+    <img src="./assets/sandbox-user-provisioning-apiuser-post.png" alt="Sandbox User Provisioning apiuser - POST" title="Sandbox User Provisioning apiuser - POST" width="800">
+
+    If you have no registered application or not logged in to your account, you will get an error `401 Access Denied` warning as shown below.
+
+    <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it.png" alt="Sandbox User Provisioning apiuser - POST Try It Error 401" title="Sandbox User Provisioning apiuser - POST Try It Error 401" width="800">
+
+    Otherwise, there will be no error `401 Access Denied` warning and you should be able to create an API User. You will need to fill in *X-Reference-Id* and *providerCallbackHost* (if you will handle a callback URL, by replacing *string* with your callback URL), all other fields will be filled in automatically. According to the documentation, *X-Reference-Id* is a Version 4 'Universal Unique ID' (**UUID**), in order to quickly test this, you can generate a Version 4 **UUID** using this [Online UUID Generator](https://www.uuidgenerator.net/version4). Copy the generated UUID and paste in *X-Reference-Id* field. After clicking the yellow *Send* button, you should get a `201 Created` success response. The version 4 **UUID** is now your API User.
+
+    <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it-pass.png" alt="Sandbox User Provisioning apiuser - POST Try It Pass" title="Sandbox User Provisioning apiuser - POST Try It Pass" width="800">
+
 # Contribution Guidelines
 Contributions can be made through pull requests.
 * You can start by forking this repo
