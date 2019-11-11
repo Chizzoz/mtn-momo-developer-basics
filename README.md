@@ -56,9 +56,28 @@ which will be necessary in interacting with the API using those credentials gene
 
     <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it.png" alt="Sandbox User Provisioning apiuser - POST Try It Error 401" title="Sandbox User Provisioning apiuser - POST Try It Error 401" width="800">
 
-    Otherwise, there will be no error `401 Access Denied` warning and you should be able to create an API User. You will need to fill in *X-Reference-Id* and *providerCallbackHost* (if you will handle a callback URL, by replacing *string* with your callback URL), all other fields will be filled in automatically. According to the documentation, *X-Reference-Id* is a Version 4 'Universal Unique ID' (**UUID**), in order to quickly test this, you can generate a Version 4 **UUID** using this [Online UUID Generator](https://www.uuidgenerator.net/version4). Copy the generated UUID and paste in *X-Reference-Id* field. After clicking the yellow *Send* button, you should get a `201 Created` success response. The version 4 **UUID** is now your API User.
+    Otherwise, there will be no error `401 Access Denied` warning and you should be able to create an API User. You will need to fill in *X-Reference-Id* and *providerCallbackHost* (if you will handle a callback URL, by replacing *string* with your callback URL), all other fields will be filled in automatically. According to the documentation, *X-Reference-Id* is a Version 4 'Universal Unique ID' (**UUID**), in order to quickly test this, you can generate a Version 4 **UUID** using this [Online UUID Generator](https://www.uuidgenerator.net/version4). Copy the generated UUID and paste in *X-Reference-Id* field. After clicking the yellow *Send* button, you should get a `201 Created` success response. The version 4 **UUID** is now your **API User**.
 
     <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it-pass.png" alt="Sandbox User Provisioning apiuser - POST Try It Pass" title="Sandbox User Provisioning apiuser - POST Try It Pass" width="800">
+
+    Using the **API User** created in the previous step, visit the [/v1_0/apiuser/{X-Reference-Id}/apikey - POST endpoint testing page]() and paste it in the *X-Reference-Id* field, click the yellow *Send* button and you should get a `201 Created` success reponse with your **API Key**.
+
+    <img src="./assets/sandbox-user-provisioning-apiuser-apikey.png" alt="Sandbox User Provisioning apiuser - POST apikey" title="Sandbox User Provisioning apiuser - POST apikey" width="800">
+
+    Below is an example of the API Key response.
+
+    ```
+        Date: Mon, 11 Nov 2019 13:59:08 GMT
+        Content-Length: 45
+        Content-Type: application/json; charset=utf-8
+
+        {
+        "apiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+    ```
+
+    4. Automation
+        And that's it, you're ready to start testing on the MTN MoMo API Sandbox. But, you don't want to be copying the generated keys and storing them in *.txt files, to be reused later. We need to create an automated solution that sends requests and stores resposnse data in a database, to be used by a web or mobile application. Each branch in this repo will have a different solution in achieving this.
 
 # Contribution Guidelines
 Contributions can be made through pull requests.
@@ -68,4 +87,3 @@ Contributions can be made through pull requests.
 * Once you are ready and everything checks out, you can push to your forked repo and create a pull request against this repo
 * We will then review and approve
 
-# More ToDo...
