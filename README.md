@@ -79,7 +79,7 @@ which will be necessary in interacting with the API using those credentials gene
 4. Generating an access token
 
     To call routes that require an access token, you first need to generate the token using the `/token` route.
-    The `/token` route takes in an authorization header. The value to input here is the **API User** from the previous step and the **API Key**, in the following sequence **API User**:**API Key** in encoded in base64. Make sure that they are separated by a colon. To create it you can use online conversion tools, such as, [base64encode.net](https://www.base64encode.net/) or through downloadable packages, such as, [base-64](https://www.npmjs.com/package/base-64).
+    The `/token` route takes in an authorization header. The value to input here is the **API User** from the previous step and the **API Key**, in the following sequence **API User**:**API Key**, encoded in base64. Make sure that they are separated by a colon. To create it you can use online conversion tools, such as, [base64encode.net](https://www.base64encode.net/) or through downloadable packages, such as, [base-64](https://www.npmjs.com/package/base-64).
 
     Before you paste in your newly created encoded API User and Key, make sure to prefix it with `Basic `. That is "Basic" with a space afterwards as in the following image.
 
