@@ -3,19 +3,8 @@ MTN MoMo Developer Basics is a repository aimed at giving developers a head star
 
 *Disclaimer: This repository is not officially affiliated with MTN*
 
-# General Guidelines
-The aim is to accommodate any framework, implementation or programming language. This repo will be organised by having individual branches catering to different solutions. Developers are free to contribute to any branch relevant to their skill or interest.
-
-At a bare minimum, you will be expected to register on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and follow the [Getting Started Guidelines](https://momodeveloper.mtn.com/api-documentation/getting-started/) to enable you to:
-
-* Subscribe To MTN MoMo API Products
-* Manage Your Subscriptions (`Primary Key` and `Secondary Key`)
-* Generate *API User* and *API Key*
-
-which will be necessary in interacting with the API using those credentials generated.
-
 # Getting Started
-
+if you have already registered and have subscribe to the collection product then go straight to [How to use the PHP API](#how-to)
 1. Register Application
 
     The first thing you need to do to get started, after registering on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and signing in, is going to your [User Profile Page](https://momodeveloper.mtn.com/developer) where you will find two (2) sections, one for **Your Subscriptions** and another for **Your Applications**. Here you will need to click on *Register application*, under **Your Applications**, and enter details for your application. This step is necessary in order to avoid getting a `401 Error` when trying to generate your Oauth 2.0 credentials under [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser).
@@ -27,10 +16,8 @@ which will be necessary in interacting with the API using those credentials gene
 2. Subscribe to MTN MoMo API Product
 
     You can now visit the [Products page](https://momodeveloper.mtn.com/products) to subscibe to a suitable product, you are not limited to just just one, four (4) are provided:
-    1. **Collection Widget:** Receive mobile money payments on your website through a USSD or QR code
+   
     1. **Collections:** Enable remote collection of bills, fees or taxes.
-    1. **Disbursements:** Automatically deposit funds to multiple users
-    1. **Remittances:** Remit funds to local recipients from the diaspora with ease
 
     For each product, there are options to *See full documentation* and *Subscribe*. Below is an example for *Colllection Widget*.
 
@@ -46,49 +33,64 @@ which will be necessary in interacting with the API using those credentials gene
 
     <img src="./assets/mtn-momo-subscriptions.png" alt="MTN MoMo API Subscriptions" title="MTN MoMo API Subscriptions" width="800">
 
-3. Create API User and API Key
+# How to use the PHP API {#how-to}
 
-    Under [API Sandbox](https://momodeveloper.mtn.com/docs/services/collection), select [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api), you should be redirected to [/apiuser - POST endpoint testing page](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser?). Click the yellow *Try it* button to test if your application was registered.
+see the `index.php` for example on how to use the API
 
-    <img src="./assets/sandbox-user-provisioning-apiuser-post.png" alt="Sandbox User Provisioning apiuser - POST" title="Sandbox User Provisioning apiuser - POST" width="800">
+```php
+include_once 'includes/MomoAPI.php';
+include_once 'includes/RequestPayBody.php';
 
-    If you have no registered application or not logged in to your account, you will get an error `401 Access Denied` warning as shown below.
+//first create an instant of MomoAPI with subscription key as parameter
+$momoTest = new MomoAPI('eeabff77f35c4ad8b7037a0d4cab14f2');
 
-    <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it.png" alt="Sandbox User Provisioning apiuser - POST Try It Error 401" title="Sandbox User Provisioning apiuser - POST Try It Error 401" width="800">
+//create user and get unique uuid version 4 if successful
+$uuid = $momoTest->createAPIUser(null, 'https://ggg.com');
 
-    Otherwise, there will be no error `401 Access Denied` warning and you should be able to create an API User. You will need to fill in *X-Reference-Id* and *providerCallbackHost* (if you will handle a callback URL, by replacing *string* with your callback URL), all other fields will be filled in automatically. According to the documentation, *X-Reference-Id* is a Version 4 'Universal Unique ID' (**UUID**), in order to quickly test this, you can generate a Version 4 **UUID** using this [Online UUID Generator](https://www.uuidgenerator.net/version4). Copy the generated UUID and paste in *X-Reference-Id* field. After clicking the yellow *Send* button, you should get a `201 Created` success response. The version 4 **UUID** is now your **API User**.
+echo ($uuid) ? "<br/>api user = $uuid <br/>" : "<br/>failed to create user<br/>";
 
-    <img src="./assets/sandbox-user-provisioning-apiuser-post-try-it-pass.png" alt="Sandbox User Provisioning apiuser - POST Try It Pass" title="Sandbox User Provisioning apiuser - POST Try It Pass" width="800">
+// get api_key for the user
+$apiKey = $momoTest->get_api_key($uuid);
+echo "api key = $apiKey <br/>";
 
-    Using the **API User** created in the previous step, visit the [/v1_0/apiuser/{X-Reference-Id}/apikey - POST endpoint testing page]() and paste it in the *X-Reference-Id* field, click the yellow *Send* button and you should get a `201 Created` success reponse with your **API Key**.
+//get access token for the user using his/her uuid and api_key
+$token = $momoTest->get_access_token($uuid, $apiKey);
 
-    <img src="./assets/sandbox-user-provisioning-apiuser-apikey.png" alt="Sandbox User Provisioning apiuser - POST apikey" title="Sandbox User Provisioning apiuser - POST apikey" width="800">
+echo "access_token = $token->access_token <br/>";
+```
+now with your access token you can now **accept payment**, **check balance** and so on
+```php
+$requestBody =
+    new RequestPayBody("MSISDN", '46733123453', 40, 'EUR', "jkjkjhkbh",
+        "some msg", "dsmndsm");
 
-    Below is an example of the API Key response.
+$payStatus = $momoTest->requestPay($token->access_token, $requestBody, 'https://ggg.com', $uuid);
+if ($payStatus) {
+    $payment = $momoTest->checkPaymentStatus($token->access_token, $uuid);
+}
 
-    ```
-        Date: Mon, 11 Nov 2019 13:59:08 GMT
-        Content-Length: 45
-        Content-Type: application/json; charset=utf-8
-
-        {
-        "apiKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        }
-    ```
-
-4. Generating an access token
-
-    To call routes that require an access token, you first need to generate the token using the `/token` route.
-    The `/token` route takes in an authorization header. The value to input here is the **API User** from the previous step and the **API Key**, in the following sequence **API User**:**API Key**, encoded in base64. Make sure that they are separated by a colon. To create it you can use online conversion tools, such as, [base64encode.net](https://www.base64encode.net/) or through downloadable packages, such as, [base-64](https://www.npmjs.com/package/base-64).
-
-    Before you paste in your newly created encoded API User and Key, make sure to prefix it with `Basic `. That is "Basic" with a space afterwards as in the following image.
-
-     <img src="./assets/mtn-momo-access-token.png" alt="MTN MOMO access token step" title="Collection /token POST request" width="800">
+echo "<br/> pay_status=";
+print_r($payment);
 
 
-5. Automation
+$bal = $momoTest->checkBalance($token->access_token);
+echo "<br/> bal= ";
+print_r($bal);
 
-    And that's it, you're ready to start testing on the MTN MoMo API Sandbox. But, you don't want to be copying the generated keys and storing them in *.txt files, to be reused later. We need to create an automated solution that sends requests and stores resposnse data in a database, to be used by a web or mobile application. Each branch in this repo will have a different solution in achieving this.
+$isActive = $momoTest->isUserAccountActive($token->access_token, 'MSISDN', '0541355996');
+
+echo ($isActive) ? "<br/>is Active" : "<br/>not Active";
+```
+These numbers can be used for testing
+
+
+|Number	|Response|
+|-------|------|
+| 46733123450 | failed |
+|46733123451|	rejected |
+|46733123452	| timeout |
+|46733123453 |	ongoing (will answer pending first and if requested again after 30 seconds it will respond success)|
+|46733123454|pending|
 
 # Contribution Guidelines
 Contributions can be made through pull requests.
@@ -98,3 +100,6 @@ Contributions can be made through pull requests.
 * Once you are ready and everything checks out, you can push to your forked repo and create a pull request against this repo
 * We will then review and approve
 
+
+
+[#how-to]: #how-to
