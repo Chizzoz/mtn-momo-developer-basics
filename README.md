@@ -4,7 +4,7 @@ MTN MoMo Developer Basics is a repository aimed at giving developers a head star
 *Disclaimer: This repository is not officially affiliated with MTN*
 
 # Getting Started
-if you have already registered and have subscribe to the collection product then go straight to [How to use the PHP API](#how-to)
+if you have already registered and have subscribe to the collection product then go straight to [How to use the PHP API](#how-to-use-the-php-api-how-to)
 1. Register Application
 
     The first thing you need to do to get started, after registering on the [MTN MoMo Developer Portal](https://momodeveloper.mtn.com/) and signing in, is going to your [User Profile Page](https://momodeveloper.mtn.com/developer) where you will find two (2) sections, one for **Your Subscriptions** and another for **Your Applications**. Here you will need to click on *Register application*, under **Your Applications**, and enter details for your application. This step is necessary in order to avoid getting a `401 Error` when trying to generate your Oauth 2.0 credentials under [Sandbox User Provisioning](https://momodeveloper.mtn.com/docs/services/sandbox-provisioning-api/operations/post-v1_0-apiuser).
