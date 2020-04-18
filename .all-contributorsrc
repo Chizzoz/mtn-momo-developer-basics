@@ -26,6 +26,18 @@
         "doc",
         "example"
       ]
+    },
+    {
+      "login": "Zakaria16",
+      "name": "Zakaria Mohammed",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/21069024?v=4",
+      "profile": "http://www.mazitekgh.com",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,
