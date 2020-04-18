@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Chizzoz",
+      "name": "Chizzo Cheese",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/17289498?v=4",
+      "profile": "http://oneziko.com",
+      "contributions": [
+        "content",
+        "doc",
+        "example"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "mtn-momo-developer-basics",
+  "projectOwner": "Chizzoz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

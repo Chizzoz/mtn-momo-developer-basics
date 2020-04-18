@@ -1,4 +1,7 @@
 # mtn-momo-developer-basics
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 MTN MoMo Developer Basics is a repository aimed at giving developers a head start in interacting with the MTN MoMo API's found here: https://momodeveloper.mtn.com/
 
 *Disclaimer: This repository is not officially affiliated with MTN*
@@ -98,3 +101,22 @@ Contributions can be made through pull requests.
 * Once you are ready and everything checks out, you can push to your forked repo and create a pull request against this repo
 * We will then review and approve
 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://oneziko.com"><img src="https://avatars0.githubusercontent.com/u/17289498?v=4" width="100px;" alt=""/><br /><sub><b>Chizzo Cheese</b></sub></a><br /><a href="#content-Chizzoz" title="Content">🖋</a> <a href="https://github.com/Chizzoz/mtn-momo-developer-basics/commits?author=Chizzoz" title="Documentation">📖</a> <a href="#example-Chizzoz" title="Examples">💡</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
