@@ -14,7 +14,7 @@ At a bare minimum, you will be expected to register on the [MTN MoMo Developer P
 
 which will be necessary in interacting with the API using those credentials generated.
 
-# Integrating Using PHP cURL
+# Integrating Using Python httplib
 After following the [Getting Started Guidelines](https://github.com/Chizzoz/mtn-momo-developer-basics), you should be able to use the credentials generated in the code below.
 
 ## Collections API
